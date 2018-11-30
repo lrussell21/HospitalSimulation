@@ -23,5 +23,26 @@
     <ClInclude Include="HospitalQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DoctorQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NurseQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Record.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomAssign.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Patients.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RecptionQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

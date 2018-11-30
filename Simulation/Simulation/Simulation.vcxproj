@@ -121,7 +121,14 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DoctorQueue.h" />
     <ClInclude Include="HospitalQueue.h" />
+    <ClInclude Include="NurseQueue.h" />
+    <ClInclude Include="Patients.h" />
+    <ClInclude Include="RandomAssign.h" />
+    <ClInclude Include="Record.h" />
+    <ClInclude Include="RecptionQueue.h" />
+    <ClInclude Include="Simulator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
