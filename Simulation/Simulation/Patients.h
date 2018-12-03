@@ -4,13 +4,13 @@
 class Patients
 {
 	public:
-		Patients(int t)
+		Patients(int t, int priority)
 		{
 			 patient_id = -1;
 			 check_in = t;
 			 wait_time = -1;
 			 treat_time = -1;
-			 priority_number = -1;
+			 priority_number = priority;
 			 patients_count++;
 		};
 		static int patients_count = 0;
