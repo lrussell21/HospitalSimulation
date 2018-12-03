@@ -6,7 +6,7 @@
 class HospitalQueue
 {
 public:
-  std::queue<Patients*> dummy_patients;
+  std::priority_queue<Patients*> dummy_patients;
   RandomAssign *pushRandom;
   virtual void update(int t) = 0;
   HospitalQueue(RandomAssign *RandomAssign)

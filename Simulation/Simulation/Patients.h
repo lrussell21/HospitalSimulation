@@ -13,6 +13,18 @@ class Patients
 			 priority_number = priority;
 			 patients_count++;
 		};
+
+    bool operator<(const Patients& other)
+    {
+      if (priority_number < other.priority_number) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+
+
 		static int patients_count = 0;
 		int patient_id;
 		int check_in;
