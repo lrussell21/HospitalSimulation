@@ -6,7 +6,7 @@ class Patients
 	public:
 		Patients(int t, int priority)
 		{
-			 patient_id = -1;
+       patient_name = -1;
 			 check_in = t;
 			 wait_time = -1;
 			 treat_time = -1;
@@ -14,19 +14,15 @@ class Patients
 			 patients_count++;
 		};
 
-    bool operator<(const Patients& other)
+    bool operator<(const Patients& other) const
     {
-      if (priority_number < other.priority_number) {
-        return true;
-      }
-      else {
-        return false;
-      }
+      return priority_number < other.priority_number;
     }
 
+  
 
-		static int patients_count = 0;
-		int patient_id;
+		int patients_count;
+		int patient_name;
 		int check_in;
 		int wait_time;
 		int treat_time;
