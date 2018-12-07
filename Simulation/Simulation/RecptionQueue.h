@@ -25,7 +25,12 @@ public:
     if (pushRandom->next_double() < p_rate_per_min) {
       priorityPass = pushRandom->rand_priority();
       Patients *patient = new Patients(t, priorityPass);
-      dummy_patients.push(*patient);
+      if (priorityPass <= 10) {
+        lowP_patients.push(*patient);
+      }
+      else {
+        highP_patients.push(*patient);
+      }
       if (report_output) {
         std::cout << "Patient " << patient->patient_name << " has checked in with a priority of "
                                 << patient->priority_number

@@ -1,6 +1,5 @@
 #pragma once
 #include "HospitalQueue.h"
-#include "RandomAssign.h"
 
 class NurseQueue : public HospitalQueue
 {
@@ -20,21 +19,32 @@ public:
 
   void update(int t)
   {
-    if (dummy_patients.empty())
+    if (lowP_patients.empty())
     {
-      HospitalQueue *Nurse;
-      if (Nurse->dummy_patients.empty()) {
+      HospitalQueue *Nurse1;
+      if (Nurse->lowP_patients.empty()) {
         return;
       }
-      Patients *p;
-      *p = dummy_patients.top();
-      dummy_patients.pop();
+      Nurse1 = Nurse;
+      Patients *p = new Patients;
+      *p = Nurse1->lowP_patients.top();
+      Nurse1->lowP_patients.pop();
       int treatmentTime = max_treatment_time - min_treatment_time;
       treatment_time = min_treatment_time + pushRandom->next_int(treatmentTime);
       start_treatment_time = t;
       if (report_output)
       {
-        std::cout << "Starting treatment for " << p->patient_name << " at " << t << std::endl;
+        std::cout << "Starting treatment for " << p->patient_name << " with priority " << p->priority_number << " at " << t << std::endl;
+      }
+    }
+    else if (t - start_treatment_time > treatment_time)
+    {
+      Patients *p = new Patients;
+      *p = lowP_patients.top();
+      lowP_patients.pop();
+      if (report_output)
+      {
+        std::cout << "Treatment for " << p->patient_name << " finished at " << t << std::endl;
       }
     }
   }

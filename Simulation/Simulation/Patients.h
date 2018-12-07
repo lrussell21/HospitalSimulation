@@ -4,6 +4,16 @@
 class Patients
 {
 	public:
+
+    Patients()
+    {
+      patient_name = -1;
+      check_in = -1;
+      wait_time = -1;
+      treat_time = -1;
+      priority_number = -1;
+    }
+
 		Patients(int t, int priority)
 		{
        patient_name = -1;
@@ -19,8 +29,7 @@ class Patients
       return priority_number < other.priority_number;
     }
 
-  
-
+ 
 		static int patients_count;
 		int patient_name;
 		int check_in;

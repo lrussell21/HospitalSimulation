@@ -35,11 +35,12 @@ public:
     }
     if (probability >= 2)
     {
-      return (rand() % 5) + 10;
+      return (rand() % 5) + 11;
     }
     if (probability == 1)
     {
-      return (rand() % 5) + 15;
+      return (rand() % 5) + 16;
     }
+    return 1;
   }
 };
