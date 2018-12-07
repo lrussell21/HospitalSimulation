@@ -12,17 +12,11 @@ int main() {
   Patients test3(25, 20);
   Patients test4(30, 1);
   Patients test5(35, 17);
-  if (test2 < test1) {
-    std::cout << "Yeah Boi" << std::endl;
-  }
   ReceptionQueue testReception(testRandom, 60, "Reception Queue", 1);
   
-  testReception.update(10);
-  testReception.update(20);
-  testReception.update(30);
-  testReception.update(40);
-  testReception.update(50);
-
+  for (int i = 0; i < 20; i++) {
+    testReception.update(10);
+  }
   
   return 0;
 }

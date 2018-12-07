@@ -28,6 +28,18 @@ public:
 
   int rand_priority()
   {
-    return (rand() % 20) + 1;
+    int probability = (rand() % 10) + 1;
+    if (probability >= 4)
+    {
+      return (rand() % 10) + 1;
+    }
+    if (probability >= 2)
+    {
+      return (rand() % 5) + 10;
+    }
+    if (probability == 1)
+    {
+      return (rand() % 5) + 15;
+    }
   }
 };
