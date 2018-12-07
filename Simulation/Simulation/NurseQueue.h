@@ -5,26 +5,37 @@
 class NurseQueue : public HospitalQueue
 {
 public:
-  HospitalQueue *Nurse1, *Nurse2;
-  int min_service_time;
-  int max_service_time;
-  int service_time;
-  int start_service_time;
+  HospitalQueue *Nurse;
+  int min_treatment_time;
+  int max_treatment_time;
+  int treatment_time;
+  int start_treatment_time;
   bool report_output;
 
-  // For 2 Nurses
-  NurseQueue(RandomAssign *random, HospitalQueue *N1, HospitalQueue *N2,
-    int min_service_time_, int max_service_time_, bool output) :
-    HospitalQueue(random), Nurse1(N1), Nurse2(N2),
-    min_service_time(min_service_time_), max_service_time(max_service_time_), report_output(output) {}
-  // For 1 Nurse
-  NurseQueue(RandomAssign *random, HospitalQueue *N1,
-    int min_service_time_, int max_service_time_, bool output) :
-    HospitalQueue(random), Nurse1(N1),
-    min_service_time(min_service_time_), max_service_time(max_service_time_), report_output(output) {}
+
+  NurseQueue(RandomAssign *random, HospitalQueue *N,
+    int min_treatment_time_, int max_treatment_time_, bool output) :
+    HospitalQueue(random), Nurse(N),
+    min_treatment_time(min_treatment_time_), max_treatment_time(max_treatment_time_), report_output(output) {}
 
   void update(int t)
   {
-
+    if (dummy_patients.empty())
+    {
+      HospitalQueue *Nurse;
+      if (Nurse->dummy_patients.empty()) {
+        return;
+      }
+      Patients *p;
+      *p = dummy_patients.top();
+      dummy_patients.pop();
+      int treatmentTime = max_treatment_time - min_treatment_time;
+      treatment_time = min_treatment_time + pushRandom->next_int(treatmentTime);
+      start_treatment_time = t;
+      if (report_output)
+      {
+        std::cout << "Starting treatment for " << p->patient_name << " at " << t << std::endl;
+      }
+    }
   }
 };

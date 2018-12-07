@@ -2,9 +2,13 @@
 #include "Patients.h"
 #include "RecptionQueue.h"
 #include "RandomAssign.h"
+#include "NurseQueue.h"
 
+
+// TODO: May need to split priority queue into two so Nurse can just take top of one then doctor can access both.
 
 int main() {
+
   RandomAssign* testRandom;
   testRandom = new RandomAssign();
   Patients test1(15, 15);
@@ -14,8 +18,9 @@ int main() {
   Patients test5(35, 17);
   ReceptionQueue testReception(testRandom, 60, "Reception Queue", 1);
   
-  for (int i = 0; i < 20; i++) {
-    testReception.update(10);
+  for (int i = 0; i < 200; i++) {
+    //testReception.update(10);
+    std::cout << testRandom->rand_priority() << std::endl;
   }
   
   return 0;

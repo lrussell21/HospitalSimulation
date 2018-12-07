@@ -21,7 +21,7 @@ class Patients
 
   
 
-		int patients_count;
+		static int patients_count;
 		int patient_name;
 		int check_in;
 		int wait_time;
@@ -29,4 +29,6 @@ class Patients
 		int priority_number;
 
 };
+
+int Patients::patients_count = 0;
 #endif
