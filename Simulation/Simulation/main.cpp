@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Simulator.h"
-
+#include "RandomAssign.h"
 
 int main() {
   int docs, nurses, runtime, patRate, minTime, maxTime;
