@@ -1,34 +1,35 @@
 #include <iostream>
-#include "Patients.h"
-#include "RecptionQueue.h"
-#include "RandomAssign.h"
-#include "NurseQueue.h"
-//#include "DoctorQueue.h"
+#include <string>
+#include "Simulator.h"
 
-
-// TODO: May need to split priority queue into two so Nurse can just take top of one then doctor can access both.
 
 int main() {
+  int docs, nurses, runtime, patRate, minTime, maxTime;
+  std::string askOutput;
+  bool output = false;
 
-  RandomAssign* testRandom;
-  testRandom = new RandomAssign;
-  HospitalQueue* testHp;
-  Patients test1(15, 15);
-  Patients test2(20, 7);
-  Patients test3(25, 20);
-  Patients test4(30, 1);
-  Patients test5(35, 17);
-  ReceptionQueue *testReception = new ReceptionQueue(testRandom, 60, "Reception Queue", 0);
-  
-  for (int i = 0; i < 200; i++) {
-    testReception->update(i);
-    //std::cout << testRandom->rand_priority() << std::endl;
+  std::cout << "Please enter the amount of patients per hour[patients/hour]: ";
+  std::cin >> patRate;
+  std::cout << "Please enter the amount of doctors: ";
+  std::cin >> docs;
+  std::cout << "Please enter the amount of nurses: ";
+  std::cin >> nurses;
+  std::cout << "Please enter the min service time [mins]: ";
+  std::cin >> minTime;
+  std::cout << "Please enter the max service time [mins]: ";
+  std::cin >> maxTime;
+  std::cout << "Please enter the total simulation time [hours]: ";
+  std::cin >> runtime;
+  runtime *= 60;
+
+  std::cout << "Text Output?[Y]: ";
+  std::cin >> askOutput;
+  if (askOutput == "Y" || askOutput == "y")
+  {
+    output = true;
   }
-  testHp = new NurseQueue(testRandom, testReception, 1, 10, true);
-  //testHp = new DoctorQueue(testRandom, testReception, 1, 10, true);
-  for (int i = 0; i < 200; i++) {
-    testHp->update(i);
-    //std::cout << testRandom->rand_priority() << std::endl;
-  }
+
+  Simulator sim(docs, nurses, runtime, patRate, minTime, maxTime, output);
+  sim.run();
   return 0;
 }

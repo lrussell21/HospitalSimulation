@@ -18,7 +18,6 @@ public:
   {
     p_rate_per_min = influx_rate / 60.0;
     pushRandom = r;
-
   }
 
   void update(int t) {
@@ -39,5 +38,9 @@ public:
     }
   }
 
+
+  void getPatName() {
+
+  }
 
 };
