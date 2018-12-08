@@ -40,7 +40,7 @@ public:
           start_treatment_time = t;
           if (report_output)
           {
-            std::cout << "Starting treatment for " << p->patient_name << " with priority " << p->priority_number << " at " << t << std::endl;
+            std::cout << "Doctor starting treatment for " << p->patient_name << " with priority " << p->priority_number << " at " << t << std::endl;
           }
         }
         return;
@@ -54,7 +54,7 @@ public:
       start_treatment_time = t;
       if (report_output)
       {
-        std::cout << "Starting treatment for " << p->patient_name << " with priority " << p->priority_number << " at " << t << std::endl;
+        std::cout << "Doctor starting treatment for " << p->patient_name << " with priority " << p->priority_number << " at " << t << std::endl;
       }
     }
     else if (treatment_time < t - start_treatment_time)

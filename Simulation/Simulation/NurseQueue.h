@@ -34,7 +34,7 @@ public:
       start_treatment_time = t;
       if (report_output)
       {
-        std::cout << "Starting treatment for " << p->patient_name << " with priority " << p->priority_number << " at " << t << std::endl;
+        std::cout << "Nurse starting treatment for " << p->patient_name << " with priority " << p->priority_number << " at " << t << std::endl;
       }
     }
     else if (t - start_treatment_time > treatment_time)
