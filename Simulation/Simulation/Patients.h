@@ -1,6 +1,7 @@
 #ifndef _PATIENTS_H_
 #define _PATIENTS_H_
 #include <fstream>
+#include <set>
 #include "RandomAssign.h"
 
 class Patients
@@ -13,7 +14,8 @@ class Patients
     int wait_time;
     int treat_time;
     int priority_number;
-    std::vector<std::string> names;
+    //std::vector<std::string> names;
+    std::set<std::string> names;
 
     Patients()
     {
@@ -28,7 +30,14 @@ class Patients
 		{
       nameInput();
       temp = new RandomAssign(temp->next_int(10000000));
-      patient_name = names[temp->next_int(names.size())];
+      std::set<std::string>::iterator it = names.begin();
+      int randTemp = temp->next_int(names.size());
+      for (int i = 0; i < randTemp; ++i)
+      {
+        ++it;
+      }
+
+      patient_name = *it;
 			check_in = t;
 			wait_time = -1;
 			treat_time = -1;
@@ -48,7 +57,7 @@ class Patients
       std::string tempName;
       while (patients.good()) {
         patients >> tempName;
-        names.push_back(tempName);
+        names.insert(tempName);
       }
     }
 
