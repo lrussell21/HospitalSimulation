@@ -1,14 +1,17 @@
 #pragma once
+#include <vector>
 #include "HospitalQueue.h"
 
 class NurseQueue : public HospitalQueue
 {
 public:
+  Patients * treating = new Patients;
   HospitalQueue *Nurse;
   int min_treatment_time;
   int max_treatment_time;
   int treatment_time;
   int start_treatment_time;
+  int end_treatment_time;
   bool report_output;
 
 
@@ -19,6 +22,18 @@ public:
 
   void update(int t)
   {
+    if (treating->end_treatment_time != -1)
+    {
+      if (treating->end_treatment_time == t) {
+        if (report_output)
+        {
+          std::cout << "Nurse finished treatment for " << treating->patient_name << " with priority " << treating->priority_number << " at " << t << std::endl;
+        }
+        treating->end_treatment_time = -1;
+      }
+      return;
+    }
+
     if (lowP_patients.empty())
     {
       HospitalQueue *Nurse1;
@@ -32,10 +47,13 @@ public:
       int treatmentTime = max_treatment_time - min_treatment_time;
       treatment_time = min_treatment_time + pushRandom->next_int(treatmentTime);
       start_treatment_time = t;
+      end_treatment_time = t + treatmentTime; // NEW
+      p->end_treatment_time = end_treatment_time;
       if (report_output)
       {
         std::cout << "Nurse starting treatment for " << p->patient_name << " with priority " << p->priority_number << " at " << t << std::endl;
       }
+      *treating = *p;
     }
     else if (t - start_treatment_time > treatment_time)
     {

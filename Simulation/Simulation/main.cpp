@@ -14,9 +14,9 @@ int main() {
   std::cin >> docs;
   std::cout << "Please enter the amount of nurses: ";
   std::cin >> nurses;
-  std::cout << "Please enter the min service time [mins]: ";
+  std::cout << "Please enter the min treatment time [mins]: ";
   std::cin >> minTime;
-  std::cout << "Please enter the max service time [mins]: ";
+  std::cout << "Please enter the max treatment time [mins]: ";
   std::cin >> maxTime;
   std::cout << "Please enter the total simulation time [hours]: ";
   std::cin >> runtime;

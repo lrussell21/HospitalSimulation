@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include "RecptionQueue.h"
 #include "DoctorQueue.h"
 #include "NurseQueue.h"
