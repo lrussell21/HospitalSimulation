@@ -1,5 +1,6 @@
 #pragma once
 #include "HospitalQueue.h"
+#include "Record.h"
 
 class DoctorQueue : public HospitalQueue
 {
@@ -28,6 +29,8 @@ public:
         {
           std::cout << "Doctor finished treatment for " << treating->patient_name << " with priority " << treating->priority_number << " at " << t << std::endl;
         }
+        Record *pushRecord = new Record;
+        pushRecord->update_report(treating);
         treating->end_treatment_time = -1;
       }
       return;
@@ -55,7 +58,9 @@ public:
           treatment_time = min_treatment_time + pushRandom->next_int(treatmentTime);
           start_treatment_time = t;
           end_treatment_time = t + treatmentTime; // NEW
+          p->treat_time = treatment_time;
           p->end_treatment_time = end_treatment_time;
+          p->wait_time = start_treatment_time - p->check_in;
           if (report_output)
           {
             std::cout << "Doctor starting treatment for " << p->patient_name << " with priority " << p->priority_number << " at " << t << std::endl;
@@ -72,7 +77,9 @@ public:
       treatment_time = min_treatment_time + pushRandom->next_int(treatmentTime);
       start_treatment_time = t;
       end_treatment_time = t + treatmentTime; // NEW
+      p->treat_time = treatment_time;
       p->end_treatment_time = end_treatment_time;
+      p->wait_time = start_treatment_time - p->check_in;
       if (report_output)
       {
         std::cout << "Doctor starting treatment for " << p->patient_name << " with priority " << p->priority_number << " at " << t << std::endl;

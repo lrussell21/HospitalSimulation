@@ -4,7 +4,7 @@
 #include "DoctorQueue.h"
 #include "NurseQueue.h"
 #include "RandomAssign.h"
-
+#include "Record.h"
 
 class Simulator
 {
@@ -17,7 +17,7 @@ private:
 
 public:
 
-  Simulator(int doctors,int nurses,int sim_duration, int patient_income_rate, int min_treatment_time, int max_treatment_time, bool report) :
+  Simulator(int doctors, int nurses, int sim_duration, int patient_income_rate, int min_treatment_time, int max_treatment_time, bool report) :
     runtime(sim_duration), report_output(report)
   {
     random = new RandomAssign;
@@ -52,5 +52,10 @@ public:
       for (unsigned int j = 0; j < queues.size(); ++j)
         queues[j]->update(i);
     }
+  }
+  void report()
+  {
+    Record *output = new Record;
+    output->print_report();
   }
 };

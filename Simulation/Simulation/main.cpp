@@ -31,5 +31,6 @@ int main() {
 
   Simulator sim(docs, nurses, runtime, patRate, minTime, maxTime, output);
   sim.run();
+  sim.report();
   return 0;
 }
