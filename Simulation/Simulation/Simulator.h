@@ -13,6 +13,7 @@ private:
   std::vector<HospitalQueue *> queues;
   //Report *m_report;
   RandomAssign *random;
+  ReceptionQueue *nameSearch;
   bool report_output;
 
 public:
@@ -22,6 +23,7 @@ public:
   {
     random = new RandomAssign;
     ReceptionQueue *reception = new ReceptionQueue(random, patient_income_rate, "Reception Queue", report_output);
+    nameSearch = reception;
     queues.push_back(reception);
     if (nurses == 1) {
       NurseQueue *nurse1 = new NurseQueue(random, reception, min_treatment_time, max_treatment_time, report_output);
@@ -58,4 +60,10 @@ public:
     Record *output = new Record;
     output->print_report();
   }
+
+  void nameToSearch(std::string name)
+  {
+    nameSearch->patSearch(name);
+  }
+
 };

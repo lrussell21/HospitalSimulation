@@ -5,6 +5,7 @@
 
 int main() {
   int docs, nurses, runtime, patRate, minTime, maxTime;
+  std::string searchName = "test";
   std::string askOutput;
   bool output = false;
 
@@ -32,5 +33,11 @@ int main() {
   Simulator sim(docs, nurses, runtime, patRate, minTime, maxTime, output);
   sim.run();
   sim.report();
+  while (searchName != "n")
+  {
+    std::cout << "Patient search(input 'n' to exit): ";
+    std::cin >> searchName;
+    sim.nameToSearch(searchName);
+  }
   return 0;
 }

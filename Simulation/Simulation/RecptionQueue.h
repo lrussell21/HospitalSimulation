@@ -73,6 +73,4 @@ public:
     }
     return *it;
   }
-
-
 };

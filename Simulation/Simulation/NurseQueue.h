@@ -30,7 +30,9 @@ public:
           std::cout << "Nurse finished treatment for " << treating->patient_name << " with priority " << treating->priority_number << " at " << t << std::endl;
         }
         Record *pushRecord = new Record;
+        Nurse->treatedPatients.push_back(*treating);
         pushRecord->update_report(treating);
+
         treating->end_treatment_time = -1;
       }
       return;

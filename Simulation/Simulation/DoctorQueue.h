@@ -31,6 +31,7 @@ public:
         }
         Record *pushRecord = new Record;
         pushRecord->update_report(treating);
+        Doctor->treatedPatients.push_back(*treating);
         treating->end_treatment_time = -1;
       }
       return;

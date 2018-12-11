@@ -14,7 +14,6 @@ class Patients
     int treat_time;
     int priority_number;
     int end_treatment_time;
-    //std::vector<std::string> names;
     std::set<std::string> names;
 
     Patients()
