@@ -18,7 +18,7 @@ private:
 
 public:
 
-  Simulator(int doctors, int nurses, int sim_duration, int patient_income_rate, int min_treatment_time, int max_treatment_time, bool report) :
+  Simulator(int doctors, int nurses, int sim_duration, int patient_income_rate, bool report) :
     runtime(sim_duration), report_output(report)
   {
     random = new RandomAssign;
@@ -26,22 +26,22 @@ public:
     nameSearch = reception;
     queues.push_back(reception);
     if (nurses == 1) {
-      NurseQueue *nurse1 = new NurseQueue(random, reception, min_treatment_time, max_treatment_time, report_output);
+      NurseQueue *nurse1 = new NurseQueue(random, reception, 1, 10, report_output);
       queues.push_back(nurse1);
     }
     if (nurses == 2) {
-      NurseQueue *nurse1 = new NurseQueue(random, reception, min_treatment_time, max_treatment_time, report_output);
-      NurseQueue *nurse2 = new NurseQueue(random, reception, min_treatment_time, max_treatment_time, report_output);
+      NurseQueue *nurse1 = new NurseQueue(random, reception, 1, 10, report_output);
+      NurseQueue *nurse2 = new NurseQueue(random, reception, 1, 10, report_output);
       queues.push_back(nurse1);
       queues.push_back(nurse2);
     }
     if (doctors == 1) {
-      DoctorQueue *doc1 = new DoctorQueue(random, reception, min_treatment_time, max_treatment_time, report_output);
+      DoctorQueue *doc1 = new DoctorQueue(random, reception, 1, 20, report_output);
       queues.push_back(doc1);
     }
     if (doctors == 2) {
-      DoctorQueue *doc1 = new DoctorQueue(random, reception, min_treatment_time, max_treatment_time, report_output);
-      DoctorQueue *doc2 = new DoctorQueue(random, reception, min_treatment_time, max_treatment_time, report_output);
+      DoctorQueue *doc1 = new DoctorQueue(random, reception, 1, 20, report_output);
+      DoctorQueue *doc2 = new DoctorQueue(random, reception, 1, 20, report_output);
       queues.push_back(doc1);
       queues.push_back(doc2);
     }

@@ -21,6 +21,11 @@ public:
     return int(next_double() * n);
   }
 
+  int randIntRange(int r)
+  {
+    return int(rand() % r);
+  }
+
   double next_double()
   {
     return double(rand()) / RAND_MAX;

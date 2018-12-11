@@ -4,7 +4,7 @@
 #include "RandomAssign.h"
 
 int main() {
-  int docs, nurses, runtime, patRate, minTime, maxTime;
+  int docs, nurses, runtime, patRate;
   std::string searchName = "test";
   std::string askOutput;
   bool output = false;
@@ -15,10 +15,6 @@ int main() {
   std::cin >> docs;
   std::cout << "Please enter the amount of nurses: ";
   std::cin >> nurses;
-  std::cout << "Please enter the min treatment time [mins]: ";
-  std::cin >> minTime;
-  std::cout << "Please enter the max treatment time [mins]: ";
-  std::cin >> maxTime;
   std::cout << "Please enter the total simulation time [hours]: ";
   std::cin >> runtime;
   runtime *= 60;
@@ -30,9 +26,10 @@ int main() {
     output = true;
   }
 
-  Simulator sim(docs, nurses, runtime, patRate, minTime, maxTime, output);
+  Simulator sim(docs, nurses, runtime, patRate, output);
   sim.run();
   sim.report();
+
   while (searchName != "n")
   {
     std::cout << "Patient search(input 'n' to exit or 'all' to list all treated patients): ";
