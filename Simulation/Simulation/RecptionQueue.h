@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <set>
 #include "HospitalQueue.h"
 
 class ReceptionQueue : public HospitalQueue
@@ -13,6 +15,7 @@ private:
   std::string p_name;
   bool report_output;
   RandomAssign *pushRandom;
+  std::set<std::string> names;
 public:
   ReceptionQueue(RandomAssign *r, int influx_rate, std::string pname, bool output):
                  HospitalQueue(r), p_influx(influx_rate), p_name(pname), report_output(output)
@@ -20,6 +23,7 @@ public:
     p_rate_per_min = influx_rate / 60.0;
     pushRandom = r;
     influx = influx_rate;
+    nameInput();
   }
 
   void update(int t) {
@@ -27,6 +31,7 @@ public:
       if (pushRandom->next_double() < p_rate_per_min) {
         priorityPass = pushRandom->rand_priority();
         Patients *patient = new Patients(t, priorityPass);
+        patient->patient_name = setRandomName();
         if (priorityPass <= 10) {
           lowP_patients.push(*patient);
         }
@@ -46,5 +51,28 @@ public:
   void getPatName() {
 
   }
+
+  void nameInput()
+  {
+    std::ifstream patients;
+    patients.open("patients.txt");
+    std::string tempName;
+    while (patients.good()) {
+      patients >> tempName;
+      names.insert(tempName);
+    }
+  }
+
+  std::string setRandomName() {
+    pushRandom = new RandomAssign(pushRandom->next_int(10000000));
+    std::set<std::string>::iterator it = names.begin();
+    int randTemp = pushRandom->next_int(names.size());
+    for (int i = 0; i < randTemp; ++i)
+    {
+      ++it;
+    }
+    return *it;
+  }
+
 
 };

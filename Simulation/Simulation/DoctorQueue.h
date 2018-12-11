@@ -10,8 +10,8 @@ public:
   int min_treatment_time;
   int max_treatment_time;
   int treatment_time;
-  int start_treatment_time;
-  int end_treatment_time;
+  int start_treatment_time = -1;
+  int end_treatment_time = -1;
   bool report_output;
 
 
