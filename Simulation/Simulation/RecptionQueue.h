@@ -64,7 +64,7 @@ public:
   }
 
   std::string setRandomName() {
-    pushRandom = new RandomAssign(pushRandom->next_int(10000000));
+    pushRandom = new RandomAssign(pushRandom->next_int(100000000));
     std::set<std::string>::iterator it = names.begin();
     int randTemp = pushRandom->next_int(names.size());
     for (int i = 0; i < randTemp; ++i)
