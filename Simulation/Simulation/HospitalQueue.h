@@ -17,13 +17,27 @@ public:
   }
   void patSearch(std::string name)
   {
+    bool output = false;
     for (int pat = 0; pat < treatedPatients.size(); ++pat)
     {
       if (treatedPatients[pat].patient_name == name) {
-        std::cout << name << " check in with a priority of " << treatedPatients[pat].priority_number
-          << ", had a wait time of " << treatedPatients[pat].wait_time << ", and a treatment time of "
-          << treatedPatients[pat].treat_time << "." << std::endl;
+        output = true;
+        std::cout << name << " checked in at " << treatedPatients[pat].check_in << " with a priority of " << treatedPatients[pat].priority_number
+          << ", had a wait time of " << treatedPatients[pat].wait_time << " minutes, and a treatment time of "
+          << treatedPatients[pat].treat_time << " minutes." << std::endl;
       }
+    }
+    if (!output)
+    {
+      std::cout << "No record of " << name << "." << std::endl;
+    }
+  }
+  
+  void listAll()
+  {
+    for (int pat = 0; pat < treatedPatients.size(); ++pat)
+    {
+      std::cout << treatedPatients[pat].patient_name << std::endl;
     }
   }
 };

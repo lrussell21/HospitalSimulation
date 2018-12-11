@@ -63,7 +63,14 @@ public:
 
   void nameToSearch(std::string name)
   {
-    nameSearch->patSearch(name);
+    if (name != "all")
+    {
+      nameSearch->patSearch(name);
+    }
+    else
+    {
+      nameSearch->listAll();
+    }
   }
 
 };

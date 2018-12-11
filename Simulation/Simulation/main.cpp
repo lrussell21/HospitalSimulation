@@ -35,7 +35,7 @@ int main() {
   sim.report();
   while (searchName != "n")
   {
-    std::cout << "Patient search(input 'n' to exit): ";
+    std::cout << "Patient search(input 'n' to exit or 'all' to list all treated patients): ";
     std::cin >> searchName;
     sim.nameToSearch(searchName);
   }

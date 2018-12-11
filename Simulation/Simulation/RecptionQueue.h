@@ -14,7 +14,7 @@ private:
   int influx;
   std::string p_name;
   bool report_output;
-  RandomAssign *pushRandom;
+  RandomAssign *pushRandom = new RandomAssign;
   std::set<std::string> names;
 public:
   ReceptionQueue(RandomAssign *r, int influx_rate, std::string pname, bool output):
@@ -64,9 +64,8 @@ public:
   }
 
   std::string setRandomName() {
-    pushRandom = new RandomAssign(pushRandom->next_int(100000000));
     std::set<std::string>::iterator it = names.begin();
-    int randTemp = pushRandom->next_int(names.size());
+    int randTemp = pushRandom->next_int(names.size()) - 1;
     for (int i = 0; i < randTemp; ++i)
     {
       ++it;
