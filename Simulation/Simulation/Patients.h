@@ -1,8 +1,6 @@
 #ifndef _PATIENTS_H_
 #define _PATIENTS_H_
 
-#include "RandomAssign.h"
-
 class Patients
 {
 	public:
@@ -14,7 +12,6 @@ class Patients
     int treat_time;
     int priority_number;
     int end_treatment_time;
-    std::set<std::string> names;
 
     Patients()
     {
@@ -28,7 +25,7 @@ class Patients
 
 		Patients(int t, int priority)
 		{
-      patient_name = "UNSET";
+      patient_name = "";
 			check_in = t;
       wait_time = 0;
 			treat_time = 0;
@@ -40,30 +37,6 @@ class Patients
     {
       return priority_number < other.priority_number;
     }
-
-    /*
-    void nameInput()
-    {
-      std::ifstream patients;
-      patients.open("patients.txt");
-      std::string tempName;
-      while (patients.good()) {
-        patients >> tempName;
-        names.insert(tempName);
-      }
-    }
-
-    void setRandomName() {
-      temp = new RandomAssign(temp->next_int(10000000));
-      std::set<std::string>::iterator it = names.begin();
-      int randTemp = temp->next_int(names.size());
-      for (int i = 0; i < randTemp; ++i)
-      {
-        ++it;
-      }
-      patient_name = *it;
-    }
-    */
 };
 
 int Patients::patients_count = 0;
